@@ -1,9 +1,6 @@
 package spring.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class user {
@@ -11,10 +8,24 @@ public class user {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @Column(name ="name")
     private String name;
+
+    @Column(name ="surname")
     private String surname;
+
+    @Column(name ="email")
     private String email;
+
+    @Column(name ="password")
     private String password;
+
+    public user(String name, String surname, String email, String password) {
+        this.name = name;
+        this.surname = surname;
+        this.email = email;
+        this.password = password;
+    }
 
     public Long getId() {
         return id;
