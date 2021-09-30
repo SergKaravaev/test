@@ -3,8 +3,8 @@ package spring.models;
 import javax.persistence.*;
 
 @Entity
-@Table(name="user")
-public class user {
+@Table(name="imploer")
+public class Imploer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -15,21 +15,17 @@ public class user {
     @Column(name ="surname")
     private String surname;
 
-    @Column(name ="email")
-    private String email;
+    @Column(name ="id_jobs")
+    private Long id_jobs;
 
-    @Column(name ="password")
-    private String password;
-
-    public user() {
-
+    public Imploer() {
     }
 
-    public user(String name, String surname, String email, String password) {
+    public Imploer(Long id, String name, String surname, Long id_jobs) {
+        this.id = id;
         this.name = name;
         this.surname = surname;
-        this.email = email;
-        this.password = password;
+        this.id_jobs = id_jobs;
     }
 
     public Long getId() {
@@ -56,20 +52,11 @@ public class user {
         this.surname = surname;
     }
 
-    public String getEmail() {
-        return email;
+    public Long getId_jobs() {
+        return id_jobs;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setId_jobs(Long id_jobs) {
+        this.id_jobs = id_jobs;
     }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
 }
