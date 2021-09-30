@@ -3,9 +3,10 @@ package spring.models;
 import javax.persistence.*;
 
 @Entity
+@Table(name="user")
 public class user {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name ="name")
@@ -19,6 +20,10 @@ public class user {
 
     @Column(name ="password")
     private String password;
+
+    public user() {
+
+    }
 
     public user(String name, String surname, String email, String password) {
         this.name = name;

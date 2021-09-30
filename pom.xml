@@ -29,7 +29,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <java.version>16.0.2</java.version>
+        <java.version>17</java.version>
         <spring.profiles.active>local,no-liquibase</spring.profiles.active>
     </properties>
 
