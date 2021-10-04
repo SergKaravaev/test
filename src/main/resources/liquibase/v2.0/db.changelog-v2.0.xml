@@ -5,7 +5,10 @@
 
     <include file="02-changeset-avto-table.xml" relativeToChangelogFile="true"/>
     <include file="03-changeset-jobs-table.xml" relativeToChangelogFile="true"/>
-    <include file="04-changeset-imploer-table.xml" relativeToChangelogFile="true"/>
+    <include file="04-changeset-employee-table.xml" relativeToChangelogFile="true"/>
     <include file="05-changeset-sto-table.xml" relativeToChangelogFile="true"/>
+    <include file="06-changeset-service-table.xml" relativeToChangelogFile="true"/>
+    <include file="07-changeset-employee_service-table.xml" relativeToChangelogFile="true"/>
+
 
 </databaseChangeLog>
