@@ -14,8 +14,8 @@ public class Avto {
     @Column(name = "brant")
     private String brant;
 
-    @Column(name = "model")
-    private String model;
+    @Column(name = "models")
+    private String models;
 
     @Column(name = "id_users")
     private Long id_users;
@@ -23,9 +23,9 @@ public class Avto {
     public Avto() {
     }
 
-    public Avto(String brant, String model, Long id_users) {
+    public Avto(String brant, String models, Long id_users) {
         this.brant = brant;
-        this.model = model;
+        this.models = models;
         this.id_users = id_users;
     }
 
@@ -45,12 +45,12 @@ public class Avto {
         this.brant = brant;
     }
 
-    public String getModel() {
-        return model;
+    public String getModels() {
+        return models;
     }
 
-    public void setModel(String model) {
-        this.model = model;
+    public void setModels(String models) {
+        this.models = models;
     }
 
     public Long getId_users() {
