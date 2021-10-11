@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS employee_service  (
+CREATE TABLE IF NOT EXISTS users_service  (
 id BIGINT NOT NULL AUTO_INCREMENT,
 id_users BIGINT NOT NULL,
 id_service BIGINT NOT NULL,
