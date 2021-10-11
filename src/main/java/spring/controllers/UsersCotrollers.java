@@ -15,11 +15,6 @@ import spring.repository.UsersRepository;
 @Autowired
 private UsersRepository usersRepository;
 
-        @GetMapping("/")
-        public String home (Model model) {
-            return "home";
-        }
-
     @GetMapping("/users")
     public String users (Model model) {
         return "users";
