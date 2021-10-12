@@ -1,4 +1,4 @@
-package spring.models;
+package com.boots.entity;
 
 import javax.persistence.*;
 

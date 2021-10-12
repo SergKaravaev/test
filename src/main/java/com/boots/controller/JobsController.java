@@ -1,4 +1,4 @@
-package spring.controllers;
+package com.boots.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -6,11 +6,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import spring.models.Jobs;
-import spring.repository.JobsRepository;
+import com.boots.entity.Jobs;
+import com.boots.repository.JobsRepository;
 
 @Controller
-public class JobsControllers {
+public class JobsController {
 
         @Autowired
         private JobsRepository jobsRepository;

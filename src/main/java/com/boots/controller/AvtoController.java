@@ -1,4 +1,4 @@
-package spring.controllers;
+package com.boots.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -6,11 +6,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import spring.models.Avto;
-import spring.repository.AvtoRepository;
+import com.boots.entity.Avto;
+import com.boots.repository.AvtoRepository;
 
 @Controller
-public class AvtoControllers {
+public class AvtoController {
 
     @Autowired
     private AvtoRepository avtoRepository;

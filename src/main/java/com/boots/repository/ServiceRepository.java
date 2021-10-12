@@ -1,7 +1,7 @@
-package spring.repository;
+package com.boots.repository;
 
 import org.springframework.data.repository.CrudRepository;
-import spring.models.Service;
+import com.boots.entity.Service;
 
 public interface ServiceRepository extends CrudRepository<Service, Long> {
 }

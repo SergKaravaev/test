@@ -1,17 +1,17 @@
-package spring.controllers;
+package com.boots.controller;
 
+import com.boots.repository.StoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import spring.models.Sto;
-import spring.repository.StoRepository;
+import com.boots.entity.Sto;
 
 
 @Controller
-public class StoControllers {
+public class StoController {
 
         @Autowired
         private StoRepository stoRepository;
