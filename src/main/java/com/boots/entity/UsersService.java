@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "users_service")
-public class Users_service {
+public class UsersService {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,10 +20,10 @@ public class Users_service {
     @Column(name = "work_employee")
     private String work_employee;
 
-    public Users_service() {
+    public UsersService() {
     }
 
-    public Users_service(Long id_users, Long id_service, String work_employee) {
+    public UsersService(Long id_users, Long id_service, String work_employee) {
         this.id_users = id_users;
         this.id_service = id_service;
         this.work_employee = work_employee;

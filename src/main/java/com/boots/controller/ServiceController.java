@@ -25,6 +25,6 @@ public class ServiceController {
     public String ServiceAdd (@RequestParam Long id_jobs, @RequestParam Long id_sto, @RequestParam float service_price, Model model) {
         Service service = new Service(id_jobs, id_sto, service_price);
         serviceRepository.save(service);
-        return "redirect:/";
+        return "redirect:/usersservice";
     }
 }

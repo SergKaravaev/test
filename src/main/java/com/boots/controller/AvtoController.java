@@ -24,6 +24,6 @@ public class AvtoController {
     public String AvtoAdd (@RequestParam String brant, @RequestParam String models, @RequestParam Long id_users, Model model) {
         Avto avto = new Avto(brant, models, id_users);
         avtoRepository.save(avto);
-        return "redirect:/";
+        return "redirect:/sto";
     }
 }

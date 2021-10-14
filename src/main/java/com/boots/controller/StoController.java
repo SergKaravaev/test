@@ -25,6 +25,6 @@ public class StoController {
         public String StoAdd (@RequestParam Long id_avto,Model model) {
             Sto sto = new Sto(id_avto);
             stoRepository.save(sto);
-            return "redirect:/";
+            return "redirect:/jobs";
         }
     }

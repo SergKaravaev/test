@@ -24,7 +24,7 @@ public class JobsController {
         public String JobsAdd(@RequestParam String type_of_work, @RequestParam float price, Model model) {
             Jobs jobs = new Jobs(type_of_work, price);
             jobsRepository.save(jobs);
-            return "redirect:/";
+            return "redirect:/service";
         }
     }
 

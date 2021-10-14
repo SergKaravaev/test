@@ -4,6 +4,5 @@ name VARCHAR(20) NOT NULL,
 surname VARCHAR(20) NOT NULL,
 username VARCHAR(255) NOT NULL,
 password VARCHAR(20) NOT NULL,
-passwordConfirm VARCHAR(20) NOT NULL,
 roles VARCHAR(20) NOT NULL,
 PRIMARY KEY(id));

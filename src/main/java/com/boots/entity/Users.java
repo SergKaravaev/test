@@ -1,16 +1,10 @@
 package com.boots.entity;
 
-
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
 import javax.persistence.*;
-import java.util.Set;
-import java.util.Collection;
-
 
 @Entity
 @Table(name = "users")
-public class Users implements UserDetails {
+public class Users {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,68 +17,51 @@ public class Users implements UserDetails {
     @Column(name = "surname")
     private String surname;
 
-  //  @Size(min=2, message = "Не меньше 5 знаков")
-   @Column(name = "username")
+    @Column(name = "username")
     private String username;
 
-  //  @Size(min=2, message = "Не меньше 5 знаков")
-   @Column(name = "password")
+    @Column(name = "password")
     private String password;
 
-    @Transient
-    @Column(name = "passwordConfirm")
-    private String passwordConfirm;
-
-    @ManyToMany(fetch = FetchType.EAGER)
     @Column(name = "roles")
-    private Set<Role> roles;
+    private String roles;
 
     public Users() {
     }
 
-    public Long getId() {
-        return id;
+    public Users(String name, String surname, String username, String password, String roles) {
+
+        this.name = name;
+        this.surname = surname;
+        this.username = username;
+        this.password = password;
+        this.roles = roles;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public String getName() {
+        return name;
     }
 
-    @Override
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
     public String getUsername() {
         return username;
-    }
-
-    @Override
-    public boolean isAccountNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isAccountNonLocked() {
-        return true;
-    }
-
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isEnabled() {
-        return true;
     }
 
     public void setUsername(String username) {
         this.username = username;
     }
 
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return getRoles();
-    }
-
-    @Override
     public String getPassword() {
         return password;
     }
@@ -93,19 +70,11 @@ public class Users implements UserDetails {
         this.password = password;
     }
 
-    public String getPasswordConfirm() {
-        return passwordConfirm;
-    }
-
-    public void setPasswordConfirm(String passwordConfirm) {
-        this.passwordConfirm = passwordConfirm;
-    }
-
-    public Set<Role> getRoles() {
+    public String getRoles() {
         return roles;
     }
 
-    public void setRoles(Set<Role> roles) {
+    public void setRoles(String roles) {
         this.roles = roles;
     }
 }
