@@ -25,7 +25,8 @@ public class Services {
     public Services() {
     }
 
-    public Services(Long id_jobs, Long id_sto, float services_price) {
+    public Services(Long id, Long id_jobs, Long id_sto, float services_price) {
+        this.id = id;
         this.id_jobs = id_jobs;
         this.id_sto = id_sto;
         this.services_price = services_price;

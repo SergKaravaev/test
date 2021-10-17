@@ -30,13 +30,22 @@ public class Users {
     public Users() {
     }
 
-    public Users(String name, String surname, String username, String password, String roles) {
+    public Users(Long id, String name, String surname, String username, String password, String roles) {
 
+        this.id = id;
         this.name = name;
         this.surname = surname;
         this.username = username;
         this.password = password;
         this.roles = roles;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {

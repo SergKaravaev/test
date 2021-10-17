@@ -24,7 +24,8 @@ public class Avto {
     public Avto() {
     }
 
-    public Avto(String brant, String models, Long id_users) {
+    public Avto(Long id, String brant, String models, Long id_users) {
+        this.id = id;
         this.brant = brant;
         this.models = models;
         this.id_users = id_users;

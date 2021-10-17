@@ -21,7 +21,8 @@ public class Jobs {
     public Jobs() {
     }
 
-    public Jobs(String type_of_work, float price) {
+    public Jobs(Long id, String type_of_work, float price) {
+        this.id = id;
         this.type_of_work = type_of_work;
         this.price = price;
     }

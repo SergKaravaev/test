@@ -11,7 +11,7 @@ public interface UsersServicesDao {
     //read
     List<UsersServices> getAll() throws SQLException;
 
-    UsersServices getById(Long id_users, Long id_services) throws SQLException;
+    UsersServices getById(Long id) throws SQLException;
 
     //update
     void update(UsersServices usersServices) throws SQLException;

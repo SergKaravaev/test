@@ -24,7 +24,8 @@ public class UsersServices {
     public UsersServices() {
     }
 
-    public UsersServices(Long id_users, Long id_services, String work_employee) {
+    public UsersServices(Long id, Long id_users, Long id_services, String work_employee) {
+        this.id = id;
         this.id_users = id_users;
         this.id_services = id_services;
         this.work_employee = work_employee;
