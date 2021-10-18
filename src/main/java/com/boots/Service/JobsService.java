@@ -15,14 +15,13 @@ public class JobsService extends TestConnection implements JobsDao {
 
         PreparedStatement preparedStatement = null;
 
-        String sql = "INSERT INTO jobs (id, type_of_work, price) VALUES(?, ?, ?)";
+        String sql = "INSERT INTO jobs (type_of_work, price) VALUES(?, ?)";
 
         try {
             preparedStatement = connection.prepareStatement(sql);
 
-            preparedStatement.setLong(1, jobs.getId());
-            preparedStatement.setString(2, jobs.getType_of_work());
-            preparedStatement.setFloat(3, jobs.getPrice());
+            preparedStatement.setString(1, jobs.getType_of_work());
+            preparedStatement.setFloat(2, jobs.getPrice());
 
 
             preparedStatement.executeUpdate();

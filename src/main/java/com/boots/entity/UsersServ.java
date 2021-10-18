@@ -4,8 +4,8 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "users_services")
-public class UsersServices {
+@Table(name = "users_serv")
+public class UsersServ {
 
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,19 +15,18 @@ public class UsersServices {
         @Column(name = "id_users")
         private Long id_users;
 
-        @Column(name = "id_services")
-        private Long id_services;
+        @Column(name = "id_serv")
+        private Long id_serv;
 
         @Column(name = "work_employee")
         private String work_employee;
 
-    public UsersServices() {
+    public UsersServ() {
     }
 
-    public UsersServices(Long id, Long id_users, Long id_services, String work_employee) {
-        this.id = id;
+    public UsersServ(Long id_users, Long id_serv, String work_employee) {
         this.id_users = id_users;
-        this.id_services = id_services;
+        this.id_serv = id_serv;
         this.work_employee = work_employee;
     }
 
@@ -47,12 +46,12 @@ public class UsersServices {
         this.id_users = id_users;
     }
 
-    public Long getId_services() {
-        return id_services;
+    public Long getId_serv() {
+        return id_serv;
     }
 
-    public void setId_services(Long id_services) {
-        this.id_services = id_services;
+    public void setId_serv(Long id_serv) {
+        this.id_serv = id_serv;
     }
 
     public String getWork_employee() {
@@ -67,24 +66,21 @@ public class UsersServices {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        UsersServices that = (UsersServices) o;
-        return Objects.equals(id, that.id) &&
-                Objects.equals(id_users, that.id_users) &&
-                Objects.equals(id_services, that.id_services) &&
-                Objects.equals(work_employee, that.work_employee);
+        UsersServ usersServ = (UsersServ) o;
+        return Objects.equals(id, usersServ.id) && Objects.equals(id_users, usersServ.id_users) && Objects.equals(id_serv, usersServ.id_serv) && Objects.equals(work_employee, usersServ.work_employee);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, id_users, id_services, work_employee);
+        return Objects.hash(id, id_users, id_serv, work_employee);
     }
 
     @Override
     public String toString() {
-        return "UsersServices{" +
+        return "UsersServ{" +
                 "id=" + id +
                 ", id_users=" + id_users +
-                ", id_services=" + id_services +
+                ", id_serv=" + id_serv +
                 ", work_employee='" + work_employee + '\'' +
                 '}';
     }

@@ -17,15 +17,14 @@ public class AvtoService extends TestConnection implements AvtoDao {
 
         PreparedStatement preparedStatement = null;
 
-        String sql = "INSERT INTO avto (id, brant, models, id_users) VALUES(?, ?, ?, ?)";
+        String sql = "INSERT INTO avto (brant, models, id_users) VALUES(?, ?, ?)";
 
         try {
             preparedStatement = connection.prepareStatement(sql);
 
-            preparedStatement.setLong(1, avto.getId());
-            preparedStatement.setString(2, avto.getBrant());
-            preparedStatement.setString(3, avto.getModels());
-            preparedStatement.setLong(4, avto.getId_users());
+            preparedStatement.setString(1, avto.getBrant());
+            preparedStatement.setString(2, avto.getModels());
+            preparedStatement.setLong(3, avto.getId_users());
 
             preparedStatement.executeUpdate();
         }

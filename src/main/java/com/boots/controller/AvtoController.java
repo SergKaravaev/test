@@ -1,29 +1,41 @@
 package com.boots.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import com.boots.Service.AvtoService;
+import com.boots.Service.UsersService;
+import com.boots.entity.Avto;
+import com.boots.entity.Users;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import com.boots.entity.Avto;
-import com.boots.repository.AvtoRepository;
+import java.sql.SQLException;
 
 @Controller
 public class AvtoController {
 
-    @Autowired
-    private AvtoRepository avtoRepository;
+    private AvtoService avtoService = new AvtoService();
 
     @GetMapping("/avto")
     public String avto (Model model) {
         return "avto";
     }
 
-    @PostMapping("/avto")
+  @PostMapping("/avto")
     public String AvtoAdd (@RequestParam String brant, @RequestParam String models, @RequestParam Long id_users, Model model) {
-        Avto avto = new Avto(brant, models, id_users);
-        avtoRepository.save(avto);
-        return "redirect:/sto";
+
+        Avto avto = new Avto();
+      avto.setBrant(brant);
+      avto.setModels(models);
+      avto.setId_users(id_users);
+
+        try {
+            avtoService.add(avto);
+
+        } catch (SQLException e) {
+            System.out.println("машина не добавилась");
+            e.printStackTrace();
+        }
+        return "redirect:/";
     }
 }

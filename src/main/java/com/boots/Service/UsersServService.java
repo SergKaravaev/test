@@ -1,28 +1,28 @@
 package com.boots.Service;
 
 import JDBC.TestConnection;
-import com.boots.Dao.ServicesDao;
-import com.boots.entity.Services;
+import com.boots.Dao.UsersServicesDao;
+import com.boots.entity.UsersServ;
 import java.sql.*;
 import java.util.*;
 
-public class ServicesService extends TestConnection implements ServicesDao {
-
-    Connection connection = getConnection();
+public class UsersServService extends TestConnection implements UsersServicesDao {
+    private Connection connection = getConnection();
 
     @Override
-    public void add(Services services) throws SQLException {
+    public void add(UsersServ usersServ) throws SQLException {
+
         PreparedStatement preparedStatement = null;
 
-        String sql = "INSERT INTO services (id, id_jobs, id_sto, services_price) VALUES(?, ?, ?, ?)";
+        String sql = "INSERT INTO users_serv (id_users, id_serv, work_employee) VALUES(?, ?, ?)";
 
         try {
             preparedStatement = connection.prepareStatement(sql);
 
-            preparedStatement.setLong(1, services.getId());
-            preparedStatement.setLong(2, services.getId_jobs());
-            preparedStatement.setLong(3, services.getId_sto());
-            preparedStatement.setFloat(4, services.getServices_price());
+            preparedStatement.setLong(1, usersServ.getId_users());
+            preparedStatement.setLong(2, usersServ.getId_serv());
+            preparedStatement.setString(3, usersServ.getWork_employee());
+
 
             preparedStatement.executeUpdate();
         }
@@ -39,13 +39,14 @@ public class ServicesService extends TestConnection implements ServicesDao {
                 connection.close();
             }
         }
-    }
+        }
+
 
     @Override
-    public List<Services> getAll() throws SQLException {
-        List<Services> servicesList = new ArrayList<>();
+    public List<UsersServ> getAll() throws SQLException {
+        List<UsersServ> usersServList = new ArrayList<>();
 
-        String sql = "SELECT id, id_jobs, id_sto, services_price FROM services";
+        String sql = "SELECT id, id_users, id_serv, work_employee FROM users_serv";
 
         Statement statement = null;
 
@@ -55,13 +56,13 @@ public class ServicesService extends TestConnection implements ServicesDao {
             ResultSet resultSet = statement.executeQuery(sql);
 
             while (resultSet.next()) {
-                Services services = new Services();
-                services.setId(resultSet.getLong("id"));
-                services.setId_jobs(resultSet.getLong("id_jobs"));
-                services.setId_sto(resultSet.getLong("id_sto"));
-                services.setServices_price(resultSet.getFloat("services_price"));
+                UsersServ usersServ = new UsersServ();
+                usersServ.setId(resultSet.getLong("id"));
+                usersServ.setId_users(resultSet.getLong("id_users"));
+                usersServ.setId_serv(resultSet.getLong("id_serv"));
+                usersServ.setWork_employee(resultSet.getString("work_employee"));
 
-                servicesList.add(services);
+                usersServList.add(usersServ);
             }
         }
 
@@ -78,16 +79,16 @@ public class ServicesService extends TestConnection implements ServicesDao {
             }
         }
 
-        return servicesList;
+        return usersServList;
     }
 
     @Override
-    public Services getById(Long id) throws SQLException {
+    public UsersServ getById(Long id) throws SQLException {
         PreparedStatement preparedStatement = null;
 
-        String sql = "SELECT id, id_jobs, id_sto, services_price FROM services WHERE id=?";
+        String sql = "SELECT id, id_users, id_serv, work_employee FROM users_serv WHERE id=?";
 
-        Services services = new Services();
+        UsersServ usersServ = new UsersServ();
 
         try {
             preparedStatement = connection.prepareStatement(sql);
@@ -95,10 +96,10 @@ public class ServicesService extends TestConnection implements ServicesDao {
 
             ResultSet resultSet = preparedStatement.executeQuery();
 
-            services.setId(resultSet.getLong("id"));
-            services.setId_jobs(resultSet.getLong("id_jobs"));
-            services.setId_sto(resultSet.getLong("id_sto"));
-            services.setServices_price(resultSet.getFloat("services_price"));
+            usersServ.setId(resultSet.getLong("id"));
+            usersServ.setId_users(resultSet.getLong("id_users"));
+            usersServ.setId_serv(resultSet.getLong("id_serv"));
+            usersServ.setWork_employee(resultSet.getString("work_employee"));
 
             preparedStatement.executeUpdate();
         }
@@ -115,22 +116,22 @@ public class ServicesService extends TestConnection implements ServicesDao {
                 connection.close();
             }
         }
-        return services;
+        return usersServ;
     }
 
     @Override
-    public void update(Services services) throws SQLException {
+    public void update(UsersServ usersServ) throws SQLException {
         PreparedStatement preparedStatement = null;
 
-        String sql = "UPDATE services SET id_jobs=?, id_sto=?, services_price=? WHERE id=?";
+        String sql = "UPDATE users_serv SET id_users=?, id_serv=?, work_employee=? WHERE id=?";
 
         try {
             preparedStatement = connection.prepareStatement(sql);
 
-            preparedStatement.setLong(1, services.getId_jobs());
-            preparedStatement.setLong(2, services.getId_sto());
-            preparedStatement.setFloat(3, services.getServices_price());
-            preparedStatement.setLong(4, services.getId());
+            preparedStatement.setLong(1, usersServ.getId_users());
+            preparedStatement.setLong(2, usersServ.getId_serv());
+            preparedStatement.setString(3, usersServ.getWork_employee());
+            preparedStatement.setLong(4, usersServ.getId());
 
             preparedStatement.executeUpdate();
         }
@@ -150,15 +151,15 @@ public class ServicesService extends TestConnection implements ServicesDao {
     }
 
     @Override
-    public void remove(Services services) throws SQLException {
+    public void remove(UsersServ usersServ) throws SQLException {
         PreparedStatement preparedStatement = null;
 
-        String sql = "DELETE FROM services WHERE id=?";
+        String sql = "DELETE FROM usersServ WHERE id=?";
 
         try {
             preparedStatement = connection.prepareStatement(sql);
 
-            preparedStatement.setLong(1, services.getId());
+            preparedStatement.setLong(1, usersServ.getId());
 
             preparedStatement.executeUpdate();
         }

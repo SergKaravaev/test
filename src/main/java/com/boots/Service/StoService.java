@@ -14,13 +14,12 @@ public class StoService  extends TestConnection implements StoDao {
     public void add(Sto sto) throws SQLException {
         PreparedStatement preparedStatement = null;
 
-        String sql = "INSERT INTO sto (id, id_avto) VALUES(?, ?)";
+        String sql = "INSERT INTO sto (id_avto) VALUES(?)";
 
         try {
             preparedStatement = connection.prepareStatement(sql);
 
-            preparedStatement.setLong(1, sto.getId());
-            preparedStatement.setLong(2, sto.getId_avto());
+            preparedStatement.setLong(1, sto.getId_avto());
 
             preparedStatement.executeUpdate();
         }

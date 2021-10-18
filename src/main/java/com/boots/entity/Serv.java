@@ -1,11 +1,12 @@
 package com.boots.entity;
 
 import javax.persistence.*;
+import java.sql.Date;
 import java.util.Objects;
 
 @Entity
-@Table(name = "services")
-public class Services {
+@Table(name = "serv")
+public class Serv {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,18 +19,20 @@ public class Services {
     @Column(name = "id_sto")
     private Long id_sto;
 
- //   private int date;
-    @Column(name = "services_price")
-    private float services_price;
+    @Column(name = "data")
+    private Date data;
 
-    public Services() {
+    @Column(name = "serv_price")
+    private float serv_price;
+
+    public Serv() {
     }
 
-    public Services(Long id, Long id_jobs, Long id_sto, float services_price) {
-        this.id = id;
+    public Serv(Long id_jobs, Long id_sto, Date data, float serv_price) {
         this.id_jobs = id_jobs;
         this.id_sto = id_sto;
-        this.services_price = services_price;
+        this.data = data;
+        this.serv_price = serv_price;
     }
 
     public Long getId() {
@@ -56,37 +59,43 @@ public class Services {
         this.id_sto = id_sto;
     }
 
-    public float getServices_price() {
-        return services_price;
+    public Date getData() {
+        return data;
     }
 
-    public void setServices_price(float services_price) {
-        this.services_price = services_price;
+    public void setData(Date data) {
+        this.data = data;
+    }
+
+    public float getServ_price() {
+        return serv_price;
+    }
+
+    public void setServ_price(float serv_price) {
+        this.serv_price = serv_price;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Services services = (Services) o;
-        return Float.compare(services.services_price, services_price) == 0 &&
-                Objects.equals(id, services.id) &&
-                Objects.equals(id_jobs, services.id_jobs) &&
-                Objects.equals(id_sto, services.id_sto);
+        Serv serv = (Serv) o;
+        return Float.compare(serv.serv_price, serv_price) == 0 && Objects.equals(id, serv.id) && Objects.equals(id_jobs, serv.id_jobs) && Objects.equals(id_sto, serv.id_sto) && Objects.equals(data, serv.data);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, id_jobs, id_sto, services_price);
+        return Objects.hash(id, id_jobs, id_sto, data, serv_price);
     }
 
     @Override
     public String toString() {
-        return "Services{" +
+        return "Serv{" +
                 "id=" + id +
                 ", id_jobs=" + id_jobs +
                 ", id_sto=" + id_sto +
-                ", services_price=" + services_price +
+                ", data=" + data +
+                ", serv_price=" + serv_price +
                 '}';
     }
 }

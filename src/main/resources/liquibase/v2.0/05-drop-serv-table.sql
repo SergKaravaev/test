@@ -1,0 +1,5 @@
+ALTER TABLE serv DROP CONSTRAINT serv_ibfk_1;
+GO
+ALTER TABLE serv DROP CONSTRAINT serv_ibfk_2;
+GO
+DROP TABLE serv;

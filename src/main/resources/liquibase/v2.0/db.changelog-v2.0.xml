@@ -6,7 +6,7 @@
     <include file="02-changeset-avto-table.xml" relativeToChangelogFile="true"/>
     <include file="03-changeset-jobs-table.xml" relativeToChangelogFile="true"/>
     <include file="04-changeset-sto-table.xml" relativeToChangelogFile="true"/>
-    <include file="05-changeset-services-table.xml" relativeToChangelogFile="true"/>
-    <include file="06-changeset-users_services-table.xml" relativeToChangelogFile="true"/>
+    <include file="05-changeset-serv-table.xml" relativeToChangelogFile="true"/>
+    <include file="06-changeset-users_serv-table.xml" relativeToChangelogFile="true"/>
 
 </databaseChangeLog>

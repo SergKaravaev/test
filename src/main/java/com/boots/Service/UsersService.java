@@ -14,17 +14,16 @@ public class UsersService extends TestConnection implements UsersDao {
     public void add(Users users) throws SQLException {
         PreparedStatement preparedStatement = null;
 
-        String sql = "INSERT INTO users (id, name, surname, username, password, roles) VALUES(?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO users (name, surname, username, password, roles) VALUES(?, ?, ?, ?, ?)";
 
         try {
             preparedStatement = connection.prepareStatement(sql);
 
-            preparedStatement.setLong(1, users.getId());
-            preparedStatement.setString(2, users.getName());
-            preparedStatement.setString(3, users.getSurname());
-            preparedStatement.setString(4, users.getUsername());
-            preparedStatement.setString(5, users.getPassword());
-            preparedStatement.setString(6, users.getRoles());
+            preparedStatement.setString(1, users.getName());
+            preparedStatement.setString(2, users.getSurname());
+            preparedStatement.setString(3, users.getUsername());
+            preparedStatement.setString(4, users.getPassword());
+            preparedStatement.setString(5, users.getRoles());
 
             preparedStatement.executeUpdate();
         }
@@ -86,73 +85,49 @@ public class UsersService extends TestConnection implements UsersDao {
     }
 
     @Override
-    public Users getById(Long id) throws SQLException {
-        PreparedStatement preparedStatement = null;
-
-        String sql = "SELECT id, name, surname, username, password, roles FROM users WHERE id=?";
+    public Users getById(Long id) throws SQLException
+    {
+        String sql = "SELECT * FROM users WHERE  id = ?";
 
         Users users = new Users();
+        try(Connection connection = getConnection())
+        {
+            try(PreparedStatement preparableStatement = connection.prepareStatement(sql))
+            {
+                preparableStatement.setLong(1, id);
 
-        try {
-            preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setLong(1, id);
+                ResultSet resultSet = preparableStatement.executeQuery();
+                if(resultSet.next())
+                {
+                    users.setId(resultSet.getLong("id"));
+                    users.setName(resultSet.getString("name"));
+                    users.setSurname(resultSet.getString("surname"));
+                    users.setUsername(resultSet.getString("username"));
+                    users.setPassword(resultSet.getString("password"));
+                    users.setRoles(resultSet.getString("roles"));
+                }
 
-            ResultSet resultSet = preparedStatement.executeQuery();
-
-            users.setId(resultSet.getLong("id"));
-            users.setName(resultSet.getString("name"));
-            users.setSurname(resultSet.getString("surname"));
-            users.setUsername(resultSet.getString("username"));
-            users.setPassword(resultSet.getString("password"));
-            users.setRoles(resultSet.getString("roles"));
-
-            preparedStatement.executeUpdate();
-        }
-
-        catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        finally {
-            if (preparedStatement != null) {
-                preparedStatement.close();
-            }
-            if (connection != null) {
-                connection.close();
             }
         }
         return users;
     }
 
     @Override
-    public void update(Users users) throws SQLException {
-        PreparedStatement preparedStatement = null;
-
+    public void update(Users users) throws SQLException
+    {
         String sql = "UPDATE users SET name=?, surname=?, username=?, password=?, roles=? WHERE id=?";
+        try(Connection connection = getConnection())
+        {
+            try(PreparedStatement preparableStatement = connection.prepareStatement(sql))
+            {
+                preparableStatement.setString(1, users.getName());
+                preparableStatement.setString(2, users.getSurname());
+                preparableStatement.setString(3, users.getUsername());
+                preparableStatement.setString(4, users.getPassword());
+                preparableStatement.setString(5, users.getRoles());
+                preparableStatement.setLong(6, users.getId());
 
-        try {
-            preparedStatement = connection.prepareStatement(sql);
-
-            preparedStatement.setString(1, users.getName());
-            preparedStatement.setString(2, users.getSurname());
-            preparedStatement.setString(3, users.getUsername());
-            preparedStatement.setString(4, users.getPassword());
-            preparedStatement.setString(5, users.getRoles());
-            preparedStatement.setLong(6, users.getId());
-
-            preparedStatement.executeUpdate();
-        }
-
-        catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        finally {
-            if (preparedStatement != null) {
-                preparedStatement.close();
-            }
-            if (connection != null) {
-                connection.close();
+                preparableStatement.executeUpdate();
             }
         }
     }

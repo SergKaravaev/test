@@ -1,29 +1,28 @@
 package com.boots.Service;
 
 import JDBC.TestConnection;
-import com.boots.Dao.UsersServicesDao;
-import com.boots.entity.UsersServices;
+import com.boots.Dao.ServDao;
+import com.boots.entity.Serv;
 import java.sql.*;
 import java.util.*;
 
-public class UsersServicesService extends TestConnection implements UsersServicesDao {
-    private Connection connection = getConnection();
+public class ServService extends TestConnection implements ServDao {
+
+    Connection connection = getConnection();
 
     @Override
-    public void add(UsersServices usersServices) throws SQLException {
-
+    public void add(Serv serv) throws SQLException {
         PreparedStatement preparedStatement = null;
 
-        String sql = "INSERT INTO users_services (id, id_users, id_services, work_employee) VALUES(?, ?, ?, ?)";
+        String sql = "INSERT INTO serv (id_jobs, id_sto, data, serv_price) VALUES(?, ?, ?, ?)";
 
         try {
             preparedStatement = connection.prepareStatement(sql);
 
-            preparedStatement.setLong(1, usersServices.getId());
-            preparedStatement.setLong(2, usersServices.getId_users());
-            preparedStatement.setLong(3, usersServices.getId_services());
-            preparedStatement.setString(4, usersServices.getWork_employee());
-
+            preparedStatement.setLong(1, serv.getId_jobs());
+            preparedStatement.setLong(2, serv.getId_sto());
+            preparedStatement.setDate(3, serv.getData());
+            preparedStatement.setFloat(4, serv.getServ_price());
 
             preparedStatement.executeUpdate();
         }
@@ -40,14 +39,13 @@ public class UsersServicesService extends TestConnection implements UsersService
                 connection.close();
             }
         }
-        }
-
+    }
 
     @Override
-    public List<UsersServices> getAll() throws SQLException {
-        List<UsersServices> usersServicesList = new ArrayList<>();
+    public List<Serv> getAll() throws SQLException {
+        List<Serv> servList = new ArrayList<>();
 
-        String sql = "SELECT id, id_users, id_services, work_employee FROM users_services";
+        String sql = "SELECT id, id_jobs, id_sto, data, serv_price FROM serv";
 
         Statement statement = null;
 
@@ -57,13 +55,14 @@ public class UsersServicesService extends TestConnection implements UsersService
             ResultSet resultSet = statement.executeQuery(sql);
 
             while (resultSet.next()) {
-                UsersServices usersServices = new UsersServices();
-                usersServices.setId(resultSet.getLong("id"));
-                usersServices.setId_users(resultSet.getLong("id_users"));
-                usersServices.setId_services(resultSet.getLong("id_services"));
-                usersServices.setWork_employee(resultSet.getString("work_employee"));
+                Serv serv = new Serv();
+                serv.setId(resultSet.getLong("id"));
+                serv.setId_jobs(resultSet.getLong("id_jobs"));
+                serv.setId_sto(resultSet.getLong("id_sto"));
+                serv.setData(resultSet.getDate("data"));
+                serv.setServ_price(resultSet.getFloat("serv_price"));
 
-                usersServicesList.add(usersServices);
+                servList.add(serv);
             }
         }
 
@@ -80,16 +79,16 @@ public class UsersServicesService extends TestConnection implements UsersService
             }
         }
 
-        return usersServicesList;
+        return servList;
     }
 
     @Override
-    public UsersServices getById(Long id) throws SQLException {
+    public Serv getById(Long id) throws SQLException {
         PreparedStatement preparedStatement = null;
 
-        String sql = "SELECT id, id_users, id_services, work_employee FROM users_services WHERE id=?";
+        String sql = "SELECT id, id_jobs, id_sto, data, services_price FROM serv WHERE id=?";
 
-        UsersServices usersServices = new UsersServices();
+        Serv serv = new Serv();
 
         try {
             preparedStatement = connection.prepareStatement(sql);
@@ -97,10 +96,11 @@ public class UsersServicesService extends TestConnection implements UsersService
 
             ResultSet resultSet = preparedStatement.executeQuery();
 
-            usersServices.setId(resultSet.getLong("id"));
-            usersServices.setId_users(resultSet.getLong("id_users"));
-            usersServices.setId_services(resultSet.getLong("id_services"));
-            usersServices.setWork_employee(resultSet.getString("work_employee"));
+            serv.setId(resultSet.getLong("id"));
+            serv.setId_jobs(resultSet.getLong("id_jobs"));
+            serv.setId_sto(resultSet.getLong("id_sto"));
+            serv.setData(resultSet.getDate("data"));
+            serv.setServ_price(resultSet.getFloat("serv_price"));
 
             preparedStatement.executeUpdate();
         }
@@ -117,22 +117,23 @@ public class UsersServicesService extends TestConnection implements UsersService
                 connection.close();
             }
         }
-        return usersServices;
+        return serv;
     }
 
     @Override
-    public void update(UsersServices usersServices) throws SQLException {
+    public void update(Serv serv) throws SQLException {
         PreparedStatement preparedStatement = null;
 
-        String sql = "UPDATE usersServices SET id_users=?, id_services=?, work_employee=? WHERE id=?";
+        String sql = "UPDATE serv SET id_jobs=?, id_sto=?, data, serv_price=? WHERE id=?";
 
         try {
             preparedStatement = connection.prepareStatement(sql);
 
-            preparedStatement.setLong(1, usersServices.getId_users());
-            preparedStatement.setLong(2, usersServices.getId_services());
-            preparedStatement.setString(3, usersServices.getWork_employee());
-            preparedStatement.setLong(4, usersServices.getId());
+            preparedStatement.setLong(1, serv.getId_jobs());
+            preparedStatement.setLong(2, serv.getId_sto());
+            preparedStatement.setFloat(3, serv.getServ_price());
+            preparedStatement.setDate(4, serv.getData());
+            preparedStatement.setLong(5, serv.getId());
 
             preparedStatement.executeUpdate();
         }
@@ -152,15 +153,15 @@ public class UsersServicesService extends TestConnection implements UsersService
     }
 
     @Override
-    public void remove(UsersServices usersServices) throws SQLException {
+    public void remove(Serv serv) throws SQLException {
         PreparedStatement preparedStatement = null;
 
-        String sql = "DELETE FROM usersServices WHERE id=?";
+        String sql = "DELETE FROM serv WHERE id=?";
 
         try {
             preparedStatement = connection.prepareStatement(sql);
 
-            preparedStatement.setLong(1, usersServices.getId());
+            preparedStatement.setLong(1, serv.getId());
 
             preparedStatement.executeUpdate();
         }

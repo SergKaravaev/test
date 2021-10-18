@@ -1,21 +1,21 @@
 package com.boots.Dao;
 
-import com.boots.entity.UsersServices;
+import com.boots.entity.UsersServ;
 import java.sql.SQLException;
 import java.util.List;
 
 public interface UsersServicesDao {
     //create
-    void add(UsersServices usersServices) throws SQLException;
+    void add(UsersServ usersServ) throws SQLException;
 
     //read
-    List<UsersServices> getAll() throws SQLException;
+    List<UsersServ> getAll() throws SQLException;
 
-    UsersServices getById(Long id) throws SQLException;
+    UsersServ getById(Long id) throws SQLException;
 
     //update
-    void update(UsersServices usersServices) throws SQLException;
+    void update(UsersServ usersServ) throws SQLException;
 
     //delete
-    void remove(UsersServices usersServices) throws SQLException;
+    void remove(UsersServ usersServ) throws SQLException;
 }

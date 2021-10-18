@@ -30,9 +30,7 @@ public class Users {
     public Users() {
     }
 
-    public Users(Long id, String name, String surname, String username, String password, String roles) {
-
-        this.id = id;
+    public Users(String name, String surname, String username, String password, String roles) {
         this.name = name;
         this.surname = surname;
         this.username = username;
