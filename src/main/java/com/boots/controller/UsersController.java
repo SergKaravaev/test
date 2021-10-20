@@ -20,7 +20,7 @@ public class UsersController {
 
     @GetMapping("/users")
     public String usersAdd (Model model) {
-        return "users";
+        return "users/users";
     }
 
     @PostMapping("/users")
@@ -32,13 +32,6 @@ public class UsersController {
         return "redirect:/";
     }
 
-    @GetMapping("/history")
-    public String users (Model model) {
-        Iterable<Users> users = usersRepository.findAll();
-        model.addAttribute("users", users);
-        return "history";
-    }
-
     @GetMapping("/users/{id}")
     public String usersDetails (@PathVariable(value = "id") long id, Model model) {
       if(!usersRepository.existsById(id)){
@@ -48,7 +41,7 @@ public class UsersController {
         ArrayList<Users> res = new ArrayList<>();
         users.ifPresent(res::add);
         model.addAttribute("users", res);
-        return "users-details";
+        return "users/users-details";
     }
 
     @GetMapping("/users/{id}/edit")
@@ -60,7 +53,7 @@ public class UsersController {
         ArrayList<Users> res = new ArrayList<>();
         users.ifPresent(res::add);
         model.addAttribute("users", res);
-        return "users-edit";
+        return "users/users-edit";
     }
 
     @PostMapping("/users/{id}/edit")
@@ -84,4 +77,3 @@ public class UsersController {
         return "redirect:/history";
     }
 }
-

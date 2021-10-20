@@ -20,6 +20,54 @@
     </div>
 </div>
 
+<div class="container mt-3">
+    <p>Авто</p>
+    <div th:each="el : ${avto}" class="alert alert-info mt-2">
+        <p th:text="${el.brant}" ></p>
+        <p th:text="${el.models}" ></p>
+        <a th:href="'/avto/' + ${el.id}" class ="btn btn-warning">Детальнее</a>
+    </div>
+</div>
+
+<div class="container mt-3">
+    <p>Сто</p>
+    <div th:each="el : ${sto}" class="alert alert-info mt-2">
+        <p th:text="${el.id_avto}" ></p>
+        <p th:text="${el.status}" ></p>
+        <a th:href="'/sto/' + ${el.id}" class ="btn btn-warning">Детальнее</a>
+    </div>
+</div>
+
+<div class="container mt-3">
+    <p>Работа</p>
+    <div th:each="el : ${jobs}" class="alert alert-info mt-2">
+        <p th:text="${el.type_of_work}" ></p>
+        <p th:text="${el.price}" ></p>
+        <a th:href="'/jobs/' + ${el.id}" class ="btn btn-warning">Детальнее</a>
+    </div>
+</div>
+
+<div class="container mt-3">
+    <p>Услуги</p>
+    <div th:each="el : ${serv}" class="alert alert-info mt-2">
+        <p th:text="${el.id_jobs}" ></p>
+        <p th:text="${el.id_sto}" ></p>
+        <p th:text="${el.data}" ></p>
+        <p th:text="${el.serv_price}" ></p>
+        <a th:href="'/serv/' + ${el.id}" class ="btn btn-warning">Детальнее</a>
+    </div>
+</div>
+
+<div class="container mt-3">
+    <p>Работник-услуга</p>
+    <div th:each="el : ${usersServ}" class="alert alert-info mt-2">
+        <p th:text="${el.id_users}" ></p>
+        <p th:text="${el.id_serv}" ></p>
+        <p th:text="${el.work_employee}" ></p>
+        <a th:href="'/usersServ/' + ${el.id}" class ="btn btn-warning">Детальнее</a>
+    </div>
+</div>
+
 </body>
 
 </html>

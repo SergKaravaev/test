@@ -15,11 +15,15 @@ public class Sto {
     @Column(name = "id_avto")
     private Long id_avto;
 
+    @Column(name = "status")
+    private String status;
+
     public Sto() {
     }
 
-    public Sto(Long id_avto) {
+    public Sto (Long id_avto, String status) {
         this.id_avto = id_avto;
+        this.status = status;
     }
 
     public Long getId() {
@@ -38,18 +42,25 @@ public class Sto {
         this.id_avto = id_avto;
     }
 
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Sto sto = (Sto) o;
-        return Objects.equals(id, sto.id) &&
-                Objects.equals(id_avto, sto.id_avto);
+        return Objects.equals(id, sto.id) && Objects.equals(id_avto, sto.id_avto) && Objects.equals(status, sto.status);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, id_avto);
+        return Objects.hash(id, id_avto, status);
     }
 
     @Override
@@ -57,6 +68,7 @@ public class Sto {
         return "Sto{" +
                 "id=" + id +
                 ", id_avto=" + id_avto +
+                ", status='" + status + '\'' +
                 '}';
     }
 }
