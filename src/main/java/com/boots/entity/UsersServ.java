@@ -62,26 +62,4 @@ public class UsersServ {
         this.work_employee = work_employee;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        UsersServ usersServ = (UsersServ) o;
-        return Objects.equals(id, usersServ.id) && Objects.equals(id_users, usersServ.id_users) && Objects.equals(id_serv, usersServ.id_serv) && Objects.equals(work_employee, usersServ.work_employee);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, id_users, id_serv, work_employee);
-    }
-
-    @Override
-    public String toString() {
-        return "UsersServ{" +
-                "id=" + id +
-                ", id_users=" + id_users +
-                ", id_serv=" + id_serv +
-                ", work_employee='" + work_employee + '\'' +
-                '}';
-    }
 }

@@ -24,10 +24,8 @@ public class UsersController {
     }
 
     @PostMapping("/users")
-    public String usersAdd (@RequestParam String name, @RequestParam String surname,
-                            @RequestParam String username,@RequestParam String password,
-                            @RequestParam String roles, Model model) {
-        Users users = new Users(name, surname, username, password, roles);
+    public String usersAdd (@RequestParam String name, @RequestParam String surname, Model model) {
+        Users users = new Users(name, surname);
         usersRepository.save(users);
         return "redirect:/";
     }
@@ -57,15 +55,10 @@ public class UsersController {
     }
 
     @PostMapping("/users/{id}/edit")
-    public String usersUpdate (@PathVariable(value = "id") long id, @RequestParam String name, @RequestParam String surname,
-                            @RequestParam String username,@RequestParam String password,
-                            @RequestParam String roles, Model model) {
+    public String usersUpdate (@PathVariable(value = "id") long id, @RequestParam String name, @RequestParam String surname, Model model) {
         Users users =usersRepository.findById(id).orElseThrow();
         users.setName(name);
         users.setSurname(surname);
-        users.setUsername(username);
-        users.setPassword(password);
-        users.setRoles(roles);
         usersRepository.save(users);
         return "redirect:/history";
     }

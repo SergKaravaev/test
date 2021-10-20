@@ -1,5 +1,7 @@
 package com.boots.entity;
 
+import org.springframework.security.core.userdetails.UserDetails;
+
 import javax.persistence.*;
 import java.util.Objects;
 
@@ -18,24 +20,13 @@ public class Users {
     @Column(name = "surname")
     private String surname;
 
-    @Column(name = "username")
-    private String username;
-
-    @Column(name = "password")
-    private String password;
-
-    @Column(name = "roles")
-    private String roles;
-
     public Users() {
     }
 
-    public Users(String name, String surname, String username, String password, String roles) {
+    public Users(String name, String surname) {
         this.name = name;
         this.surname = surname;
-        this.username = username;
-        this.password = password;
-        this.roles = roles;
+
     }
 
     public Long getId() {
@@ -62,58 +53,5 @@ public class Users {
         this.surname = surname;
     }
 
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getRoles() {
-        return roles;
-    }
-
-    public void setRoles(String roles) {
-        this.roles = roles;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Users users = (Users) o;
-        return Objects.equals(id, users.id) &&
-                Objects.equals(name, users.name) &&
-                Objects.equals(surname, users.surname) &&
-                Objects.equals(username, users.username) &&
-                Objects.equals(password, users.password) &&
-                Objects.equals(roles, users.roles);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, name, surname, username, password, roles);
-    }
-
-    @Override
-    public String toString() {
-        return "Users{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", surname='" + surname + '\'' +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", roles='" + roles + '\'' +
-                '}';
-    }
 }
 

@@ -75,27 +75,4 @@ public class Serv {
         this.serv_price = serv_price;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Serv serv = (Serv) o;
-        return Float.compare(serv.serv_price, serv_price) == 0 && Objects.equals(id, serv.id) && Objects.equals(id_jobs, serv.id_jobs) && Objects.equals(id_sto, serv.id_sto) && Objects.equals(data, serv.data);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, id_jobs, id_sto, data, serv_price);
-    }
-
-    @Override
-    public String toString() {
-        return "Serv{" +
-                "id=" + id +
-                ", id_jobs=" + id_jobs +
-                ", id_sto=" + id_sto +
-                ", data=" + data +
-                ", serv_price=" + serv_price +
-                '}';
-    }
 }

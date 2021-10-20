@@ -50,25 +50,4 @@ public class Sto {
         this.status = status;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Sto sto = (Sto) o;
-        return Objects.equals(id, sto.id) && Objects.equals(id_avto, sto.id_avto) && Objects.equals(status, sto.status);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, id_avto, status);
-    }
-
-    @Override
-    public String toString() {
-        return "Sto{" +
-                "id=" + id +
-                ", id_avto=" + id_avto +
-                ", status='" + status + '\'' +
-                '}';
-    }
 }

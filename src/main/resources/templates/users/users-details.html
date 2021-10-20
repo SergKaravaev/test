@@ -15,9 +15,6 @@
     <div th:each="el : ${users}" class="alert alert-info mt-2">
         <p th:text="${el.name}" ></p>
         <p th:text="${el.surname}" ></p>
-        <p th:text="${el.username}" ></p>
-        <p th:text="${el.password}" ></p>
-        <p th:text="${el.roles}" ></p>
         <a th:href="'/users/' + ${el.id} + '/edit'" class ="btn btn-warning">редактировать</a>
      <form th:action=" '/users/' + ${el.id} + '/remove'" method="post"><br>
          <button class ="btn btn-warning" type ="submit">удалить</button>
