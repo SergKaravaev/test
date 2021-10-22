@@ -1,9 +1,6 @@
 package com.boots.entity;
 
-import org.springframework.security.core.userdetails.UserDetails;
-
 import javax.persistence.*;
-import java.util.Objects;
 
 @Entity
 @Table(name = "users")
